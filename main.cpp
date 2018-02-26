@@ -14,7 +14,7 @@ class card
     public:
         void Set(int i, int val);
         void shov();
-       // ~card();
+       card& operator =(card& m);
     };
 class desk
     {
@@ -23,8 +23,35 @@ class desk
     public:
        desk();
        void shov();
+       void mix();
 
     };
+
+card& card::operator =(card& m){
+
+    this->su=m.su;
+    this->val=m.val;
+    return *this;
+}
+void desk::mix()
+    {
+        card a;
+        int x,y;
+        std::mt19937 genr(time(0));
+        std::uniform_real_distribution<> disr(0,51);
+        for(auto i=0; i<5000;i++)
+        {
+            x=disr(genr);
+            y=disr(genr);
+            if (x!=y)
+            {
+                a=this->oll[x];
+                this->oll[x]=this->oll[y];
+                this->oll[y]=a;
+            }
+        }
+
+    }
 desk::desk()
     {   int k=0;
         for(auto i=1; i<5; i++)
@@ -77,5 +104,6 @@ void card::Set(int i, int val)
 int main()
 {
 desk a;
+a.mix();
 a.shov();
 }
