@@ -7,49 +7,75 @@ struct suit{
 std::string su;
 };
 class card
-{
-private:
-    suit su;
-int val;
-public:
-   void Set(int i, int val);
-   void shov();
-};
-void card::shov()
-{
+    {
+    private:
+        suit su;
+    int val;
+    public:
+        void Set(int i, int val);
+        void shov();
+       // ~card();
+    };
+class desk
+    {
+    private:
+        card oll [52];
+    public:
+       desk();
+       void shov();
 
-    std::cout<<su.su<<' '<<val;
-}
+    };
+desk::desk()
+    {   int k=0;
+        for(auto i=1; i<5; i++)
+        for(auto j=2; j<15; j++){
+            this->oll[k].Set(i,j);
+            k++;
+        }
+    }
+void desk::shov()
+    {
+        for(auto i=0; i<52; i++){
+            this->oll[i].shov();
+
+        }
+
+    }
+void card::shov()
+    {
+
+    std::cout << su.su << ' ' << val <<std::endl;
+    }
 void card::Set(int i, int val)
-{
+    {
     switch(i)
     {
     case 1:
         {
-        this->su.su="Hearts";
+        this->su.su = "Hearts";
         break;
         }
     case 2:
         {
-        this->su.su="Diamonds";
+        this->su.su = "Diamonds";
         break;
         }
     case 3:
         {
-        this->su.su="Clubs";
+        this->su.su = "Clubs";
         break;
         }
     case 4:
         {
-        this->su.su="Spades";
+        this->su.su = "Spades";
         break;
         }
     }
-    this->val=val;
-    this->su.val=i;
+    this->val = val;
+    this->su.val = i;
 }
 int main()
 {
-card a;
-//a.Set()
+desk a;
+a.shov();
 }
