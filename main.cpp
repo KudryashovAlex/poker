@@ -6,11 +6,16 @@ struct suit{
     int val;
 std::string su;
 };
+struct im
+{
+ int namder;
+ std::string lit;
+};
 class card
     {
     private:
         suit su;
-    int val;
+    im val;
     public:
         void Set(int i, int val);
         void shov();
@@ -71,7 +76,8 @@ void desk::shov()
 void card::shov()
     {
 
-    std::cout << su.su << ' ' << val <<std::endl;
+    std::cout << su.su << ' ' << val.lit
+     <<std::endl;
     }
 void card::Set(int i, int val)
     {
@@ -98,7 +104,48 @@ void card::Set(int i, int val)
         break;
         }
     }
-    this->val = val;
+    this->val.namder = val;
+    switch(this->val.namder){
+    case 2:
+    this->val.lit='2';
+    break;
+    case 3:
+    this->val.lit='3';
+    break;
+    case 4:
+    this->val.lit='4';
+    break;
+    case 5:
+    this->val.lit='5';
+    break;
+    case 6:
+    this->val.lit='6';
+    break;
+    case 7:
+    this->val.lit='7';
+    break;
+    case 8:
+    this->val.lit='8';
+    break;
+    case 9:
+    this->val.lit='9';
+    break;
+    case 10:
+    this->val.lit="10";
+    break;
+    case 11:
+    this->val.lit='J';
+    break;
+    case 12:
+    this->val.lit='Q';
+    break;
+    case 13:
+    this->val.lit='K';
+    break;
+    case 14:
+    this->val.lit='A';
+    break;
+    }
     this->su.val = i;
 }
 int main()
