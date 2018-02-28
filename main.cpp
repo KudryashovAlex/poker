@@ -25,6 +25,7 @@ class desk
     {
     private:
         card oll [52];
+        int pos;
     public:
        desk();
        void shov();
@@ -40,6 +41,7 @@ card& card::operator =(card& m){
 }
 void desk::mix()
     {
+        this->pos=0;
         card a;
         int x,y;
         std::mt19937 genr(time(0));
